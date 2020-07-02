@@ -1,0 +1,55 @@
+﻿<script type="text/javascript">
+    $(function () {
+        var l = new showLoad();
+        $.ajax({
+            type: "GET",
+            url: "code/theme.ashx",
+            success: function (text) {
+                l.hideLoad();
+               
+                var arr = text.split(',');
+                var d = "";
+                for (var x = 0; x < arr.length; x++)
+                {
+                    d += "<button class='w3-btn w3-" + arr[x] + " w3-block w3-card-4  w3-round-xlarge' onclick='change(\""+arr[x]+"\")'>" + arr[x] + "</button><br/>";
+                }
+
+                document.getElementById("showbtn").innerHTML = d;
+            },
+            error: function (text) { showMessage(text); l.hideLoad(); }
+        });
+
+
+    });
+
+    function change(text) {
+         var ans = confirm('هل انت متاكد تطبيق اللون  ');
+         if (ans) {
+             var l = new showLoad();
+             $.ajax({
+                 type: "GET",
+                 data: { id: text },
+                 url: "code/change.ashx",
+                 success: function (text) {
+                     l.hideLoad();
+                     if (text == "good")
+                         window.location = "index.html";
+                     else
+                         showMessage('لا نستطيع تغير الالوان حاول مرة اخري','alert');
+                 },
+                 error: function (text) { showMessage(text); l.hideLoad(); }
+             });
+         }
+    }
+</script>
+
+  
+    <div class="w3-modal-content w3-animate-opacity w3-card-4 w3-text-theme w3-light-gray w3-round-xlarge"  >
+    <header class="w3-container w3-theme"> 
+          <h4 id='hpheader' class='read'>نظام الالوان  THemes </h4>
+      </header>
+          <div id="showbtn" class="w3-border-blue-grey  w3-large w3-padding w3-container" style="padding:10px;" >
+          
+       </div>     
+    </div>
+    <br /><br />

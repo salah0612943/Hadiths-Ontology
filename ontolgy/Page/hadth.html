@@ -1,0 +1,201 @@
+﻿ <script src="JS/hadth.js" type="text/javascript"></script>
+
+<!-- Start CONTENT -->
+<!-- <a href="javascript:add()" id="myBtn" class="" ><i class="fa fa-pencil w3-button w3-red w3-center w3-round w3-xxlarge"></i></a>
+-->
+  <div class=" w3-right-align  w3-text-theme w3-container w3-round-large dir2 dir3"  style=' '>
+  <p id='pheader' class=" w3-large w3-center read"> بيانات الاحاديث  </p>
+  
+  
+  <div  class="w3-dropdown-click">
+  <button class="w3-button w3-round-large  w3-theme" onclick="showSearch()"> <i class="fa fa-search w3-large " ></i></button>
+   
+    <div id='searchdiv' class=" w3-container w3-dropdown-content w3-animate-opacity w3-card-4 w3-text-theme w3-light-gray w3-round-xlarge"  style="width:250px;z-index:10;" >
+             
+             <div class="w3-group w3-right-align" >      
+                   <label id="Label3" class="dir1  read"> الحديث </label>
+                   <input class="dir2 w3-input w3-border w3-round-xlarge w3-white w3-right-align" id="sname" type="text"/>
+               </div>
+             <div class="w3-group w3-left-align" >      
+                   <label id="Label4" class="dir1 w3-left-align w3-left read">al hadeth  </label>
+                   <input class="dir2   w3-left-align w3-input w3-border w3-round-xlarge w3-white" id="sename" type="text"/>
+               </div>
+
+
+             <div class="w3-center" style="direction:rtl" >      
+                    <div id='btnsearch' onclick="search()" class="w3-btn read w3-large w3-section w3-round-xlarge w3-center w3-card-4 w3-theme  animated fadeIn" >بحث</div>     
+                             
+               </div>
+    </div>
+
+</div>
+
+   <div  class="w3-dropdown-click">
+  <button class="w3-button w3-round-large   w3-theme" onclick="showSort()"> <i class="fa fa-sort-amount-asc w3-large " ></i></button>
+   
+    <div id='sortdiv' class=" w3-row w3-dropdown-content w3-container w3-animate-opacity w3-card w3-text-theme w3-light-gray w3-round-xlarge"  style="width:300px;z-index:10;" >
+         <div class="w3-group w3-right-align dir2" >      
+                   <label id="Label1" class="dir2 w3-right-align w3-right read">الحقل  </label>
+                   <select class="w3-select w3-round-large w3-border dir2" name="sortname"  id="sortname" >
+                      <option value=""  selected></option>
+                      <option value="snamear"></option>
+                      <option value="snameen">Al hadeth</option>
+                      
+                    </select>
+          </div>
+          <div class="w3-group w3-right-align" >      
+                   <label id="Label2" class="dir1 w3-right-align w3-right read ">الطريقة  </label>
+                  <select class="w3-select w3-round-large w3-border" name="sorttype" id="sorttype">
+                      <option value=""  selected></option>
+                      <option value="asc">تصاعدي</option>
+                      <option value="desc">تنازلي</option>
+                  </select>
+          </div>
+            <div class="w3-center" style="direction:rtl" >      
+                    <div  onclick="sortshow()" id='btnsort' class="read w3-btn w3-large w3-section w3-round-xlarge w3-center w3-card-4 w3-theme  animated fadeIn" >عـــرض</div>               
+               </div>
+             
+    </div>
+
+</div>
+<button id='btnadd' class="w3-button  w3-theme w3-round-large " onclick="add()"><i class="fa fa-pencil w3-large " ></i></button>
+<button id='btnrefrsh' class="w3-button  w3-theme w3-round-large " onclick="showinfo('')"><i class="fa fa-refresh w3-large " ></i></button>
+<!--<button class="w3-button  w3-theme w3-round-large" onclick="getchk('')"><i class="fa fa-refresh w3-large " ></i></button>-->
+ </div>
+  <div class=" w3-right-align "  style='direction:rtl; margin-bottom:65px; margin-right:0px; margin-left:0px; '>
+     <ul id="sdata" class=' w3-ul w3-border-bottom  w3-round-large w3-hoverable ' style="" > </ul> 
+  </div>     
+   <!-- see Data -->
+    <div id="see" class="w3-modal">
+      <div class="w3-modal-content w3-animate-opacity w3-card-4 w3-text-theme w3-light-gray w3-round-xlarge" style='z-index:15;' >
+       <header class="w3-container w3-theme"> 
+        <span onclick="document.getElementById('see').style.display='none'" 
+        class="w3-button w3-display-topleft">&times;</span>
+        <h4 id="H1" class='read'>بيانات الراوي </h4>
+      </header>
+      <div class="w3-group w3-right-align w3-container dir2 dir3 " >      
+                   <label id="Label7" class="dir1 read">اسم الراوي </label>
+                   <select class="w3-select w3-round-large w3-border" name="cmbp"  id="cmbp" style='direction:rtl'>
+                      <option value=""  selected></option>
+                  </select>
+       </div>
+        <div class="w3-group w3-right-align w3-container" >      
+                   <label id="Label8" class="dir1 read ">الترتيب  </label>
+                   <input class="dir2 w3-input w3-border w3-round-xlarge w3-white w3-right-align" id="rank" type="text"/>
+        </div>
+        <div class="w3-center" style="direction:rtl" >      
+                    <div id='div11' onclick="savesee()" class="read w3-btn w3-large w3-section w3-round-xlarge w3-center w3-card-4 w3-theme  animated fadeIn" >حفظ</div>     
+                    <div id='div12' onclick="delsee()" class="read w3-btn w3-large w3-section w3-round-xlarge w3-center w3-card-4 w3-red  animated fadeIn" >حذف</div>           
+                    <div id='div13' onclick="document.getElementById('see').style.display='none'" class="read w3-btn w3-large w3-section w3-round-xlarge w3-center w3-card-4 w3-theme  animated fadeIn" >إغــلاق</div>          
+         </div>
+          <div class=" w3-right-align "  style='direction:rtl; margin-bottom:5px; margin-right:0px; margin-left:0px; '>
+             <ul id="usee" class=' w3-ul w3-border-bottom  w3-round-large w3-hoverable ' style="" > </ul> 
+          </div>   
+      </div>
+    </div>
+  
+  
+    <!-- Main Data -->
+    <div id="data" class="w3-modal">
+    <div class="w3-modal-content w3-animate-opacity w3-card-4 w3-text-theme w3-light-gray w3-round-xlarge" style='z-index:15;' >
+    <header class="w3-container w3-theme"> 
+        <span onclick="document.getElementById('data').style.display='none'" 
+        class="w3-button w3-display-topleft">&times;</span>
+        <h4 id="lheader" class='read'>بيانات الحديث </h4>
+      </header>
+          <div class="w3-border-blue-grey w3-round-xlarge w3-large" style="padding:10px;" >
+            <div class="w3-row">
+             <div class="w3-group w3-right-align dir1 dir3 w3-half" >      
+                   <label id="Label5" class="dir1 read">اسم الراوي </label>
+                   <select class="w3-select w3-round-large w3-border dir2 dir3" name="cmbm"  id="cmbm" style=''>
+                      <option value=""  selected></option>
+                  </select>
+               </div>
+                <div class="w3-group w3-right-align w3-half" >      
+                   <label id="Label6" class="dir1 read">الفصل  </label>
+                   <select class="w3-select w3-round-large w3-border dir3 dir2" name="cmbs"  id="cmbs" style=''>
+                      <option value=""  selected></option>
+                  </select>
+               </div>
+            </div>
+             <div class="w3-group w3-right-align" style='direction:rtl'>      
+                   <label id="lname" class="dir1 read">الحديث</label>
+                   <textarea row='70' cols='5' class="dir2 w3-input w3-border w3-round-xlarge w3-white w3-right-align" id="name" > </textarea>
+               </div>
+                <div class="w3-group w3-left-align" >      
+                   <label id="lename" class="dir1 w3-left-align w3-left read">AL Hadeth  </label>
+                   <textarea row='70' cols='5' class="dir2 w3-input w3-border w3-round-xlarge w3-white w3-left-align" id="ename" > </textarea>
+                   
+               </div>
+             <div class="w3-center" style="direction:rtl" >      
+                    <div id="btnsave" onclick="testinput()" class="read w3-btn w3-large w3-section w3-round-xlarge w3-center w3-card-4 w3-theme  animated fadeIn" >حفظ</div>     
+                    <div id="btndelete" onclick="del()" class="read w3-btn w3-large w3-section w3-round-xlarge w3-center w3-card-4 w3-red  animated fadeIn" >حذف</div>       
+                    <div id="btnword" onclick="word()" class="read w3-btn w3-large w3-section w3-round-xlarge w3-center w3-card-4 w3-theme  animated fadeIn" >الكلمات</div>               
+                    <div id="btnclose" onclick="document.getElementById('data').style.display='none'" class="read w3-btn w3-large w3-section w3-round-xlarge w3-center w3-card-4 w3-theme  animated fadeIn" >إغــلاق</div>          
+               </div>
+             
+       </div>     
+    </div>
+  </div>
+
+
+
+   <!-- word Data -->
+    <div id="worddata" class="w3-modal">
+    <div class="w3-modal-content w3-animate-opacity w3-card-4 w3-text-theme w3-light-gray w3-round-xlarge" style='z-index:15;' >
+    <header class="w3-container w3-theme"> 
+        <span onclick="document.getElementById('worddata').style.display='none'" 
+        class="w3-button w3-display-topleft">&times;</span>
+        <h4 id="H2" class='read'>بيانات الكلمات </h4>
+      </header>
+          <div class="w3-border-blue-grey w3-round-xlarge w3-large" style="padding:10px;" >
+            <div class="w3-row">
+             <div class="w3-group w3-right-align dir1 dir3 w3-half" >      
+                   <label id="Label9" class="dir1 read">اسم الراوي </label>
+                   <span id="seedata"></span>
+               </div>
+                <div class="w3-group w3-right-align w3-half" >      
+                   <label id="Label10" class="dir1 read">الفصل  </label>
+                   <span id="chdata"></span>
+               </div>
+            </div>
+            <div class="w3-row">
+                    <div class="w3-group w3-right-align dir1 dir3 w3-quarter w3-container" >      
+                       <label id="Label11" class="dir1 read">الكلمة الاولي</label>
+                       <select class="w3-select w3-round-large w3-border dir2 dir3" name="cmbf"  id="cmbf" style=''>
+                          <option value=""  selected></option>
+                      </select>
+                   </div>
+                    <div class="w3-group w3-right-align dir1 dir3 w3-quarter w3-container" >      
+                           <label id="Label13" class="dir1 read ">العلاقة  </label>
+                           <input class="dir2 w3-input w3-border w3-round-xlarge w3-white w3-right-align" id="txtar" type="text"/>
+                     </div>
+                      <div class="w3-group w3-right-align dir1 dir3 w3-quarter w3-container" >      
+                           <label id="Label14" class="dir1 read ">Relation  </label>
+                           <input class="dir2 w3-input w3-border w3-round-xlarge w3-white w3-right-align" id="txten" type="text"/>
+                     </div>
+                    <div class="w3-group w3-right-align w3-quarter w3-container" >      
+                       <label id="Label12" class="dir1 read">الكلمة الثانية  </label>
+                       <select class="w3-select w3-round-large w3-border dir3 dir2" name="cmbl"  id="cmbl" style=''>
+                          <option value=""  selected></option>
+                      </select>
+                    </div>
+                </div>
+           <div class="w3-row">
+
+             <span  id="showli" >
+               <ul class='w3-ul'><li class='w3-display-container w3-display-right '>الجنة - تودي - الفردوس <span onclick='this.parentElement.style.display='none'' class='w3-button w3-transparent w3-display-left'>&times;</span></li><li class='w3-display-container w3-display-right '>النار - تودي - الجحيم <span onclick='this.parentElement.style.display='none'' class='w3-button w3-transparent w3-display-left'>&times;</span></li><li class='w3-display-container w3-display-right '>الحطمة - هي - السعير <span onclick='this.parentElement.style.display='none'' class='w3-button w3-transparent w3-display-left'>&times;</span></li><li class='w3-display-container w3-display-right '>سجين - هي - سقر <span onclick='this.parentElement.style.display='none'' class='w3-button w3-transparent w3-display-left'>&times;</span></li></ul>
+              </span>
+            </div>
+             <div class="w3-center" style="direction:rtl" >      
+                    <div id="btnaddword" onclick="addword('add','')" class="read w3-btn w3-large w3-section w3-round-xlarge w3-center w3-card-4 w3-theme  animated fadeIn" >اضافة</div>     
+                    <div id="btncloseword" onclick="document.getElementById('worddata').style.display='none'" class="read w3-btn w3-large w3-section w3-round-xlarge w3-center w3-card-4 w3-theme  animated fadeIn" >إغــلاق</div>          
+               </div>
+             
+       </div>     
+    </div>
+  </div>
+
+
+<input id="id" type="hidden" />
+<input id="mode" type="hidden" />

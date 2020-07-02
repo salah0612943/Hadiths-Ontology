@@ -1,0 +1,130 @@
+﻿
+ <script src="JS/menuItem.js" type="text/javascript"></script>
+   <div class=" w3-right-align  w3-text-theme w3-container w3-round-large dir2 dir3"  style=''>
+  <p id='pheadr' class=" w3-large w3-center read">القوائم الفرعية</p>
+  
+  
+  <div  class="w3-dropdown-click">
+  <button id='search' class="w3-button w3-round-large  w3-theme " onclick="showSearch()"> <i class="fa fa-search w3-large " ></i></button>
+   
+    <div id='searchdiv' class=" w3-container w3-dropdown-content w3-animate-opacity w3-card-4 w3-text-theme w3-light-gray w3-round-xlarge"  style="width:250px;z-index:10;" >
+             
+             <div class="w3-group w3-right-align" >      
+                   <label id="Label3" class="dir1 read">اسم  </label>
+                   <input class="dir2 w3-input w3-border w3-round-xlarge w3-white w3-right-align" id="sname" type="text"/>
+               </div>
+             <div class="w3-group w3-left-align" >      
+                   <label id="Label4" class="dir1 w3-left-align w3-left read ">Name  </label>
+                   <input class="dir2   w3-left-align w3-input w3-border w3-round-xlarge w3-white" id="sename" type="text"/>
+               </div>
+             <div class="w3-center" style="direction:rtl" >      
+                    <div id='btnsearch' onclick="search()" class=" read w3-btn w3-large w3-section w3-round-xlarge w3-center w3-card-4 w3-theme  animated fadeIn" >بحث</div>     
+                             
+               </div>
+             
+     
+    </div>
+
+</div>
+
+ <div  class="w3-dropdown-click">
+  <button class="w3-button w3-round-large   w3-theme" onclick="showSort()"> <i class="fa fa-sort-amount-asc w3-large " ></i></button>
+   
+    <div id='sortdiv' class=" w3-row w3-dropdown-content w3-container w3-animate-opacity w3-card w3-text-theme w3-light-gray w3-round-xlarge"  style="width:250px;z-index:10;" >
+         <div class="w3-group w3-right-align" >      
+                   <label id="Label1" class="dir1 w3-right-align w3-right read">الحقل  </label>
+                   <select class="w3-select w3-round-large w3-border" name="sortname"  id="sortname" >
+                      <option value=""  selected></option>
+                      <option value="ItemName">الاسم</option>
+                      <option value="Itemen">name</option>
+                      <option value="MenuName">الرئيسة</option>
+                      <option value="Url">الصفحة</option>
+                      
+                    </select>
+          </div>
+          <div class="w3-group w3-right-align" >      
+                   <label id="Label2" class="dir1 w3-right-align w3-right read ">الطريقة  </label>
+                  <select class="w3-select w3-round-large w3-border" name="sorttype" id="sorttype">
+                      <option value=""  selected></option>
+                      <option value="asc">تصاعدي</option>
+                      <option value="desc">تنازلي</option>
+                  </select>
+          </div>
+            <div class="w3-center" style="direction:rtl" >      
+                    <div id='btnsort' onclick="sortshow()" class=" read w3-btn w3-large w3-section w3-round-xlarge w3-center w3-card-4 w3-theme  animated fadeIn" >عـــرض</div>               
+               </div>
+             
+    </div>
+
+</div>
+<button class="w3-button  w3-theme w3-round-large  " onclick="add()" id='add'><i class="fa fa-pencil w3-large " ></i></button>
+<button class="w3-button  w3-theme w3-round-large" onclick="showinfo('')"><i class="fa fa-refresh w3-large " ></i></button>
+<!--<button class="w3-button  w3-theme w3-round-large" onclick="getchk('')"><i class="fa fa-refresh w3-large " ></i></button>-->
+ </div>
+  <div class=" w3-right-align w3-container "  style='direction:rtl; margin-bottom:65px; margin-right:0px; margin-left:0px; '>
+     <ul id="sdata" class=' w3-ul w3-border  w3-round-large w3-hoverable ' style="" > </ul> 
+  </div>   
+ 
+   <!-- Main Data -->
+    <div id="data" class="w3-modal">
+    <div class="w3-modal-content w3-animate-opacity w3-card-4 w3-text-theme w3-light-gray w3-round-xlarge "  >
+    <header class="w3-container w3-theme"> 
+        <span onclick="document.getElementById('data').style.display='none'" 
+        class="w3-button w3-display-topleft">&times;</span>
+        <h4 id="kheader" class='read'>القوائم الفرعية    </h4>
+      </header>
+          <div class="w3-border-teal-grey w3-round-xlarge w3-large dir3 "  >
+          <div class="w3-row">
+             <div class="w3-half w3-container w3-right-align w3-right dir2 w3-hide-medium w3-hide-small ">  
+                   <label id="lid" class='read'>رقم </label>
+                   <input  class="w3-input w3-border w3-round-xlarge w3-white w3-right-align  dir2" id="id" readonly="true" type="text"/>
+             </div>
+             <div class="w3-half w3-container w3-right-align w3-right   dir2" >    
+                   <label id="lname" class='read'>الاسم   </label>
+                   <input class="w3-input w3-border w3-round-xlarge w3-white w3-right-align  dir2" id="name" type="text"/>
+               </div>
+             <div class="w3-half w3-container w3-right-align w3-right   dir2">      
+                   <label id="lar" class='read'>العنوان عربي  </label>
+                   <input class="w3-input w3-border w3-round-xlarge w3-white w3-right-align  dir2" id="aname" type="text"/>
+               </div>
+                             
+              <div class="w3-half w3-container w3-right-align w3-right  dir2">      
+                   <label id="len" class='read'>العنوان انجليزي  </label>
+                   <input class="w3-input w3-border w3-round-xlarge w3-white w3-right-align  dir2"  id="ename" type="text"/>
+               </div>
+               
+              <div class="w3-half w3-container w3-right-align w3-right  dir2">     
+                   <label id='lurlr' class='read'>العنوان </label>
+                   <input class="w3-input w3-border w3-round-xlarge w3-white w3-right-align  dir2" id="url" type="text"/>
+               </div>
+                             
+               <div class="w3-half w3-container w3-right-align  w3-right dir1 dir2">    
+                   <label id='licon' class='read'>الايقونه  </label>
+                   <input class="w3-input w3-border w3-round-xlarge w3-white w3-right-alig,  dir2" id="icon" type="text"/>
+               </div>
+                <div class="w3-half w3-container w3-right-align w3-right  dir1 dir2">    
+                   <label id='Label5' class='read'>القائمة الرئيسية  </label>
+                   <select id="cmbm" name="cmbm" class="w3-select w3-white w3-border w3-round-xlarge w3-right-align  w3-text-theme dir3 dir2 dir1" > <option value=""></option> </select>
+               </div>
+               <div class="w3-quarter w3-container w3-right-align w3-right dir1 dir2 dir3">  
+                   <input class="w3-check" id="chk" type="checkbox"/>  
+                   <label id='lshow' class='read dir1 dir3'>ايقونه خارجيه  </label>
+               </div>
+               <div class="w3-quarter w3-container w3-right-align  w3-right  dir1 dir2 dir3">       
+                   <input class="w3-check" id="show" type="checkbox"/>
+                   <label id='cond' class='read'>عرض  </label>
+                   
+               </div>
+             </div>    
+               <div class="w3-center" >      
+                    <div id="btnclose" onclick="document.getElementById('data').style.display='none'" class=" read w3-btn w3-large w3-section w3-round-xlarge w3-center w3-card-4 w3-theme  animated fadeIn" >إغــلاق</div>          
+                    <div id="btndelete" onclick="del()" class="read w3-btn w3-large w3-section w3-round-xlarge w3-center w3-card-4 w3-red  animated fadeIn w3-hide" >حذف</div>           
+                    <div id="btnsave" onclick="testinput()" class=" read w3-btn w3-large w3-section w3-round-xlarge w3-center w3-card-4 w3-theme  animated fadeIn w3-hide" >حفظ</div>     
+               </div>
+    </div>
+    </div>
+  </div>
+
+
+  <input id="old" type="hidden" />
+  <input id="mode" type="hidden" />
